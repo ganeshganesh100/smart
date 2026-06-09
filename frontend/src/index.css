@@ -1,0 +1,20 @@
+/* frontend/src/index.css */
+:root {
+  --primary-blue: #1a365d;
+  --accent-red: #da291c; /* Crimson inspired by Nepal's national colors */
+  --bg-slate: #f4f6f9;
+}
+
+body {
+  margin: 0;
+  font-family: 'system-ui', -apple-system, sans-serif;
+  background-color: var(--bg-slate);
+  color: #2d3748;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+}
