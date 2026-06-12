@@ -3,6 +3,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import { AuthContext } from './context/AuthContext';
 import axios from 'axios';
 import heroImage from './assets/hero.png';
+import forRentImg from './assets/for_rent.png';
+import forSaleImg from './assets/for_sale.png';
 import { 
   Sun, Moon, Search, ShieldAlert, FileText, CheckCircle, MapPin, 
   User, Plus, LogOut, Heart, MessageSquare, Trash, 
@@ -194,6 +196,22 @@ function App() {
   
   // App views: 'browse', 'my-listings', 'add-property', 'my-bookings', 'my-agreements', 'admin-panel', 'chat', 'favorites'
   const [view, setView] = useState('browse');
+
+  // Recently Added Slider
+  const [sliderIndex, setSliderIndex] = useState(0);
+  const sliderItems = [
+    { name: 'Sunshine Flat', price: 18000, type: 'Flat' },
+    { name: 'Green Valley Apartment', price: 22000, type: 'Apartment' },
+    { name: 'Kirtipur Studio Room', price: 9000, type: 'Room' },
+    { name: 'Lalitpur City House', price: 35000, type: 'House' },
+    { name: 'Bouddha Family Flat', price: 15000, type: 'Flat' },
+  ];
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSliderIndex(prev => (prev + 1) % sliderItems.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
   
   // Data State
   const [properties, setProperties] = useState([]);
@@ -780,6 +798,187 @@ function App() {
                       {t('clearFilters')}
                     </button>
                   )}
+                </div>
+              </div>
+            </div>
+
+            {/* ── RECENTLY ADDED SLIDER ── */}
+            <div style={{
+              background: 'linear-gradient(135deg, #fff3e0, #ffe0b2)',
+              borderBottom: '1px solid #ffcc80',
+              padding: '0',
+              overflow: 'hidden',
+              position: 'relative',
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                maxWidth: '1200px',
+                margin: '0 auto',
+                padding: '14px 24px',
+                gap: '16px',
+              }}>
+                {/* Property thumbnail placeholder */}
+                <div style={{
+                  width: '64px',
+                  height: '64px',
+                  borderRadius: '10px',
+                  background: 'linear-gradient(135deg, #ff9800, #f44336)',
+                  flexShrink: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '28px',
+                  boxShadow: '0 4px 12px rgba(255,152,0,0.4)',
+                }}>
+                  🏠
+                </div>
+                {/* Slide content */}
+                <div style={{ flex: 1, overflow: 'hidden' }}>
+                  <div style={{
+                    animation: 'slideIn 0.5s ease',
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}>
+                    <span style={{
+                      fontSize: '11px',
+                      fontWeight: '700',
+                      color: '#e65100',
+                      textTransform: 'uppercase',
+                      letterSpacing: '1px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                    }}>
+                      📍 Recently Added :
+                    </span>
+                    <span style={{
+                      fontSize: '15px',
+                      fontWeight: '700',
+                      color: '#1a237e',
+                      marginTop: '2px',
+                    }}>
+                      {sliderItems[sliderIndex].name}
+                      <span style={{ fontWeight: '400', color: '#5d4037', marginLeft: '8px' }}>
+                        | Price ( Rs. {sliderItems[sliderIndex].price.toLocaleString()} )
+                      </span>
+                    </span>
+                  </div>
+                </div>
+                {/* Dot indicators */}
+                <div style={{ display: 'flex', gap: '6px', flexShrink: 0 }}>
+                  {sliderItems.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setSliderIndex(i)}
+                      style={{
+                        width: i === sliderIndex ? '20px' : '8px',
+                        height: '8px',
+                        borderRadius: '4px',
+                        background: i === sliderIndex ? '#e65100' : '#ffcc80',
+                        border: 'none',
+                        cursor: 'pointer',
+                        padding: 0,
+                        transition: 'all 0.3s ease',
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* ── CATEGORY SECTION ── */}
+            <div style={{
+              maxWidth: '1200px',
+              margin: '50px auto 0 auto',
+              padding: '0 20px',
+            }}>
+              <h2 style={{
+                textAlign: 'center',
+                fontSize: '32px',
+                fontWeight: '800',
+                marginBottom: '30px',
+                color: 'var(--text-main)',
+                letterSpacing: '-0.5px',
+              }}>Category</h2>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                gap: '24px',
+                marginBottom: '50px',
+              }}>
+                {/* FOR RENT card */}
+                <div
+                  onClick={() => { setFilterType(''); setView('browse'); }}
+                  style={{
+                    position: 'relative',
+                    borderRadius: '18px',
+                    overflow: 'hidden',
+                    height: '260px',
+                    cursor: 'pointer',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
+                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.02)'; e.currentTarget.style.boxShadow = '0 16px 48px rgba(0,0,0,0.35)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.2)'; }}
+                >
+                  <img
+                    src={forRentImg}
+                    alt="For Rent"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                  {/* Dark gradient overlay */}
+                  <div style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 50%, transparent 100%)',
+                  }} />
+                  <div style={{
+                    position: 'absolute',
+                    bottom: '22px',
+                    left: '22px',
+                    color: '#ffffff',
+                    fontSize: '22px',
+                    fontWeight: '800',
+                    letterSpacing: '2px',
+                    textShadow: '0 2px 8px rgba(0,0,0,0.5)',
+                  }}>FOR RENT</div>
+                </div>
+
+                {/* FOR SALE card */}
+                <div
+                  style={{
+                    position: 'relative',
+                    borderRadius: '18px',
+                    overflow: 'hidden',
+                    height: '260px',
+                    cursor: 'pointer',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
+                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.02)'; e.currentTarget.style.boxShadow = '0 16px 48px rgba(0,0,0,0.35)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.2)'; }}
+                >
+                  <img
+                    src={forSaleImg}
+                    alt="For Sale"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                  <div style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 50%, transparent 100%)',
+                  }} />
+                  <div style={{
+                    position: 'absolute',
+                    bottom: '22px',
+                    left: '22px',
+                    color: '#ffffff',
+                    fontSize: '22px',
+                    fontWeight: '800',
+                    letterSpacing: '2px',
+                    textShadow: '0 2px 8px rgba(0,0,0,0.5)',
+                  }}>FOR SALE</div>
                 </div>
               </div>
             </div>
