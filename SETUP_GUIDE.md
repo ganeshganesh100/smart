@@ -168,3 +168,4 @@ Before deployment, replace the frontend's hardcoded local API URLs (`http://127.
 - **Login** and **Sign Up** buttons open the authentication form.
 - Admin login works with `admin@smartbasai.com` / `admin123`.
 - Admin dashboard opens from **Admin Panel** or **Admin Analytics**.
+npm install
