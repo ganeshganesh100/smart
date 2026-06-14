@@ -169,3 +169,8 @@ Before deployment, replace the frontend's hardcoded local API URLs (`http://127.
 - Admin login works with `admin@smartbasai.com` / `admin123`.
 - Admin dashboard opens from **Admin Panel** or **Admin Analytics**.
 npm install
+PORT=3000
+NODE_ENV=development
+
+
+
