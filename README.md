@@ -30,3 +30,17 @@ Follow these steps to get a local copy of the project up and running.
 ```bash
 git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
 cd your-repo-name
+
+
+## 📦 Getting Started
+
+Follow these steps to get a local copy of the project up and running.
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+```
+
+
