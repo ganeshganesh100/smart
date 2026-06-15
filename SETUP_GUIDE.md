@@ -175,7 +175,27 @@ NODE_ENV=development
 
 
 npm start
+## 📂 Project Structure
 
+```
+project-root/
+│
+├── node_modules/
+├── public/
+│   ├── css/
+│   ├── js/
+│   └── images/
+│
+├── routes/
+├── controllers/
+├── views/
+├── .env
+├── package.json
+├── server.js
+└── README.md
+```
+
+---
 
 
 
