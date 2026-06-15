@@ -58,3 +58,10 @@ PORT=5000
 NODE_ENV=development
 ```
 
+### 4. Start the Development Server
+
+```bash
+npm run dev
+```
+
+### 5.
