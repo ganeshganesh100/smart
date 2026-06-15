@@ -49,4 +49,12 @@ cd your-repo-name
 npm install
 ```
 
+### 3. Create Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+PORT=5000
+NODE_ENV=development
+```
 
