@@ -64,4 +64,14 @@ NODE_ENV=development
 npm run dev
 ```
 
-### 5.
+### 5.## 🔧 Scripts
+
+```json
+{
+  "start": "node server.js",
+  "dev": "nodemon server.js"
+}
+```
+
+---
+
