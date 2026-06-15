@@ -74,4 +74,13 @@ npm run dev
 ```
 
 ---
+## 🌐 Technologies Used
+
+- Node.js
+- Express.js
+- dotenv
+- Nodemon
+
+---
+
 
