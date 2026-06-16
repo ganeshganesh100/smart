@@ -177,22 +177,43 @@ NODE_ENV=development
 npm start
 ## 📂 Project Structure
 
-```
-project-root/
+smart-basai/
 │
-├── node_modules/
-├── public/
-│   ├── css/
-│   ├── js/
-│   └── images/
+├── backend/
+│   ├── config/
+│   │   └── db.js
+│   │
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── uploads/
+│   ├── utils/
+│   ├── .env
+│   ├── server.js
+│   └── package.json
 │
-├── routes/
-├── controllers/
-├── views/
-├── .env
-├── package.json
-├── server.js
-└── README.md
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── api/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── hooks/
+│   │   ├── layouts/
+│   │   ├── pages/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   │
+│   ├── .env
+│   ├── vite.config.js
+│   └── package.json
+│
+├── README.md
+└── .gitignore
 ```
 
 ---
